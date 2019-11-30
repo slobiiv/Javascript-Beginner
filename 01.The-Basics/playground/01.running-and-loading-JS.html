@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <!-- Almost always run your scripts at the end, just before the closing body tag.
+       If we try to select something that doesn't exist yet, then we won't have access to it.
+   -->
+  <script>
+    console.log('hey');
+  </script>
+  
+   <!-- We can store scripts via external JavaScript file (.js) -->
+  <script src="./script.js"></script> <!-- ./script.js means it is in the same folder but in another file, while ../script.js would be outside the folder by one level -->
+</body>
+</html>
