@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Type - Strings</title>
+</head>
+
+<body>
+
+
+  <script>
+    /*  String are used for holding text.
+        There are three ways of creating strings:
+          1) inside single quotes '' (preferred way)
+          2) inside double quotes ""
+          3) inside back ticks `` (Preferred way)
+    */
+    /* If you want to put a string in multiple lines, use back ticks */
+    const song = `Ob la di, ob-la-da, life goes on, bra
+                  La-la, how the life goes on
+                  Ob-la di, ob-la-da, life goes on, bra `;
+
+    /* CONCATENATION is when two or more strings are combined in one  */
+    const name = 'Slobodan';
+    const hello = 'Hello, my name is ' + name + '. Nice to meet you.';
+    /* INTERPOLATION is when you put a variable inside of a string  */
+
+    // Back ticks  really help  to work this out way better
+    const example = `Hello, how are ${name} today?`;
+    const example2 = `Hello, I am ${100 + 2} years old today!`;
+
+    // creating HTML
+    const html = `
+      <div>${name}</div>
+      <p>${hello}</p>
+    `;
+    console.log(html);
+
+  </script>
+</body>
+
+</html>
