@@ -11,6 +11,23 @@
 <body>
 
   <script>
+    function calculateBill(billAmount, taxRate) {
+      const total = billAmount * (1 + taxRate);
+      return total;
+    }
+    /* You can pass the values through varaibles also */
+    // const wesBill = 500;
+    // const wesTaxRate = 0.3;
+    // const myTotal = calculateBill(wesBill, wesTaxRate);
+    // total = wesBill * wesTaxRate
+    const myTotal = calculateBill(59, 0.13);
+
+    /* *****************************************
+      SO, WHEN VALUES GET PASSED INTO A FUNCTION,
+      THEY SORT OF GET RENAMED INTO
+      WHATEVER IT IS THAT YOU'VE DEFINED(NAMED) YOUR FUNCTION PARAMETERS.
+     */
+
 
   </script>
 </body>
