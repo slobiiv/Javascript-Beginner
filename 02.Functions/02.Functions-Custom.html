@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Custom Functions - making a function</title>
+</head>
+
+<body>
+
+  <script>
+    function calculateBill() {
+      // console.log('Running calculateBill!');
+      const total = 100 * 1.13;
+      return total;
+      // total is a temporary variable because it's created inside the function but we need to access it outside
+    }
+
+    const myTotal = calculateBill();
+    console.log(`Your total is: $${myTotal}`); // or we can acces without creating a variable
+    console.log(`Yout total is: $${calculateBill()}`);
+
+  </script>
+</body>
+
+</html>
