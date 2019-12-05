@@ -16,11 +16,10 @@
       return total;
     }
     /* You can pass the values through varaibles also */
-    // const wesBill = 500;
-    // const wesTaxRate = 0.3;
-    // const myTotal = calculateBill(wesBill, wesTaxRate);
-    // total = wesBill * wesTaxRate
-    const myTotal = calculateBill(59, 0.13);
+    const wesBill = 500;
+    const wesTaxRate = 0.3;
+    const myTotal = calculateBill(wesBill, wesTaxRate);
+    // const myTotal = calculateBill(59, 0.13);
 
     /* *****************************************
       SO, WHEN VALUES GET PASSED INTO A FUNCTION,
@@ -28,6 +27,20 @@
       WHATEVER IT IS THAT YOU'VE DEFINED(NAMED) YOUR FUNCTION PARAMETERS.
      */
 
+    // Second example
+    function sayHiTo(firstName) {
+      return `Hello ${firstName}`;
+    }
+    const greeting = sayHiTo('Wes');
+
+    // Passing FUNCTIONS AS ARGUMENTS
+    function doctorize(firstName) {
+      return `Dr. ${firstName}`;
+    }
+    function yell(name) {
+      return `HEY ${name.toUpperCase()}`;
+    }
+    yell(doctorize('Slobodan'));
 
   </script>
 </body>
