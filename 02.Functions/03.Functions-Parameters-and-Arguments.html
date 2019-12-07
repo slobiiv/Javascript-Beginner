@@ -11,15 +11,17 @@
 <body>
 
   <script>
-    function calculateBill(billAmount, taxRate) {
-      const total = billAmount * (1 + taxRate);
+    function calculateBill(billAmount, taxRate = 0.13, tipRate) {
+      const total = billAmount + (billAmount * taxRate) + billAmount * tipRate;
       return total;
     }
     /* You can pass the values through varaibles also */
-    const wesBill = 500;
-    const wesTaxRate = 0.3;
-    const myTotal = calculateBill(wesBill, wesTaxRate);
+    // const wesBill = 500;
+    // const wesTaxRate = 0.3;
+    // const myTotal = calculateBill(wesBill, wesTaxRate);
     // const myTotal = calculateBill(59, 0.13);
+    const myTotal2 = calculateBill(100, undefined, 0.2);
+    // WHEN WE WANT TO USE THE DEFAULT VALUE FROM THE PARAMETER, WHEN WE CALL THE FUNCTION WE EXPLICITLY PUT UNDEFINED AS AN ARGUMENT
 
     /* *****************************************
       SO, WHEN VALUES GET PASSED INTO A FUNCTION,
@@ -42,6 +44,12 @@
     }
     yell(doctorize('Slobodan'));
 
+
+    // Default Values
+    function alphabet(a = 'a', b = 'b', c = 'c') {
+      return `${a}, ${b}, ${c} d e ...`;
+    }
+    alphabet();
   </script>
 </body>
 
