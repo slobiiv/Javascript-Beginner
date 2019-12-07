@@ -12,6 +12,38 @@
   <script>
     // Javascript functions are first class citizens. - That means that javascript functions are values in themselves.
 
+    // Declaring functions in multiple ways:
+
+    /* 1# Regular function
+    function doctorize(firstName) {
+       return `Dr. ${firstName}`;
+     } */
+
+
+    /* 2# Anonymous function - a function without a name
+    function (firstName) {
+       return `Dr. ${firstName}`;
+    */
+
+
+    /* 3# Function expression - a function where you store a function as a value in variable (this function is technicaly anonymous) , and the browser will use the name of the variable as a name of the function:
+      const doctorize = function(firstName) {
+        return `Dr. ${firstName}`;
+      }
+    */
+
+
+    /* #4 Arrow function is an Anonymous function- concise and short syntax, don't have their own scope in refer to 'this' keyword */
+    function inchToCM(inches) {
+      const cm = inches * 2.54;
+      return cm;
+    }
+    // Arrow function example(exact same example as above):
+    const inchToCM = (inches) => inches * 2.54; // implicit return
+    const inchToCM = inches => inches * 2.54; // If you have only one parameter you don't need parentheses at all ()
+
+    // Another example of an arrow function
+
   </script>
 </body>
 
