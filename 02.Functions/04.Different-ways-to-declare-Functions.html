@@ -43,6 +43,72 @@
     const inchToCM = inches => inches * 2.54; // If you have only one parameter you don't need parentheses at all ()
 
     // Another example of an arrow function
+    function add(a, b = 3) {
+      const total = a + b;
+      return total;
+    }
+    const add = (a, b = 3) => a + b;
+
+    // Another example of an arrow function - RETURNING AND OBJECT
+    function makeABaby(first, last) {
+      const baby = {
+        name: `${first} ${last}`,
+        age: 0
+      }
+      return baby;
+    }
+    // This look of the arrow function is perfectly  correct ...
+    const makeABaby = (first, last) => {
+      const baby = {
+        name: `${first} ${last}`,
+        age: 0
+      }
+      return baby; // always return 
+    }
+    // ... but if you want to make it even shorter continue:
+    // const makeABaby = (first, last) => { return { name: `${first} ${last}`, age: 0 } }
+    const makeABaby = (first, last) => ({ name: `${first} ${last}`, age: 0 }); // not the most readable
+    // This is not always the best way to declare a function.
+
+
+    // #5 IIFE - Immediately Invoked Function Expression (wrapping function inside parantheses. )
+    // ** Parantheses always run first in JavaScript**
+    // 1.step - Wrap the function with parantheses
+    // 2.step - Add another pair of paratheses  invoking(calling) a function
+    (function () {
+      console.log('Running and IIFE');
+      return 'You are cool';
+    })();
+    // What if I need parameters?
+    (function (age) {
+      console.log('Running and IIFE');
+      return `You are cool and age ${age}`;
+    })(31);
+    /* *What is the benefit?
+     Good for scoping. It will sort of provide us our own little sheltered space where variables can't leak inside
+    */
+
+
+    // #6 METHODS - Is simply a function that lives inside of an Object
+    const slobodan = {
+      name: 'Slobodan',
+      // Here comes METHOD:
+      sayHi: function () {
+        return 'Hi Slobodan';
+      },
+      // SHORTHAND METHOD: get rid of colon, and it will make property called 'yellHi' set to a function called 'yellHi()'
+      yellHi() {
+        console.log('HII SLOBODAAN!!!');
+      },
+      // SHORTHAND METHOD: ARROW FUNCTION
+      whisperHi: () => {
+        console.log('hii sssslobooo, im a mousssse.');
+      }
+    }
+
+
+    // CALL BACK FUNCTIONS
+
 
   </script>
 </body>
