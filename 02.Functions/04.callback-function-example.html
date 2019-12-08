@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="clickMe">click me</button>
+  <script>
+    const slobodan = {
+      yellHi: function () {
+        console.log('HI SLOOOOBODAN!!!');
+      }
+    }
+    // CALLBACK FUNCTIONS - is a regular function but we use that name for something that will happen when something is done
+    // *** Explain to a kid : WHEN SOMEONE CLICKS SOMETHING, RUN THIS - OR WHEN THIS AMOUNT OF TIME HAS PASSED, RUN THIS
+
+    // 1.click callback
+    const button = document.querySelector('.clickMe');
+    button.addEventListener('click', slobodan.yellHi);
+
+    //2.  callback functions can be declared outside of the handler
+    function handleClick() {
+      console.log('Great Clicking!');
+    }
+    button.addEventListener('click', handleClick); 
+  </script>
+</body>
+
+</html>

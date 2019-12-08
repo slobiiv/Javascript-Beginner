@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
   <script>
     // Javascript functions are first class citizens. - That means that javascript functions are values in themselves.
 
@@ -107,10 +108,44 @@
     }
 
 
-    // CALL BACK FUNCTIONS
+    // CALLBACK FUNCTIONS - is a regular function but we use that name for something that will happen when something is done
+    // *** Explain to a kid : WHEN SOMEONE CLICKS SOMETHING, RUN THIS - OR WHEN THIS AMOUNT OF TIME HAS PASSED, RUN THIS
+
+    // 1. click callback
+    // const button = document.querySelector('.clickMe');
+    button.addEventListener('click', slobodan.yellHi);
+    /* We don't call the function, we gave just the acces to that function.
+      So, when someone click that button that triggers the function, it will call the function.
+      That is what is referred to as a callback function.
+    */
+
+    //2. callback functions can be declared outside of the handler (common usage)
+    function handleClick() {
+      console.log('Great Clicking!');
+    }
+    button.addEventListener('click', handleClick); // when someone click the button, here is the function you should run browser!
+
+    //3. callback function declared inside the handler(anonymous function declaration)
+    button.addEventListener('click', function () {
+      console.log('Nice Job Wes!');
+    });
+
+    // Timer callback function - first takes the function which should run, and second it takes the parameter which defines after what time to run
+    setTimeout(handleClick(), 2000);
+
+    // anonymous inside timer callback
+    setTimeout(function () {
+      console.log('Done! Time to eat!');
+    }, 2000);
+
+    // Arrow function timer callback
+    setTimeout(() => {
+      console.log('Done! Time to eat!');
+    }, 2000);
 
 
   </script>
+  <!-- <button class="clickMe">click me</button> -->
 </body>
 
 </html>
