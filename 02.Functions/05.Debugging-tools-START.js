@@ -54,3 +54,29 @@ function go() {
      $$('p') will match all of the ones that match selector. It founds all of the paragraph tags, in this case.
 
 */
+
+// 4. BREAKPOINTS
+/*
+    Using Debugger
+*/
+
+// 4. SCOPE
+
+// 5. Network Request
+// A dad joke fetch
+async function fetchDadJoke() {
+  const res = await fetch('https://icanhazdadjoke.com/', {
+    headers: {
+      Accept: 'text/plain',
+    },
+  });
+  const joke = await res.text();
+  console.log(joke);
+  return joke;
+}
+
+// 6. Break on Attribute
+
+/* in 98% of debugging Wes  uses Network Request, Breakpoints, Console Methods  */
+
+/* About the rest, it is good to know them and if you need them look up for them. */
