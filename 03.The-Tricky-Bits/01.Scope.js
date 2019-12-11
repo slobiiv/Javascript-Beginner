@@ -34,6 +34,16 @@ console.log(hair); // ReferenceError: hair is not defined
 go();
 
 
+function getName(name) {
+  function yell() {
+    console.log(name.toUpperCase());
+  }
+  yell();
+
+  getName('Slobodan');
+}
+// if you create a function, inside of another function, that function will only ever be available inside of that function
+
 
 // THIRD type of Scope : BLOCK SCOPE
 /* Whenever you have a set of curly brackets that referrs to a block. Common example is a 'if statement' */
@@ -79,3 +89,10 @@ goDog(); // snickers
   what that means is that, simply, the way that variable look-up or scope look-up happens is where the functions are defined not where they are run.
   **********************************************************************************************************
   */
+
+
+// BEST PRACTICES
+/*
+  - Try not to create global variables
+ */
+
