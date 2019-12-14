@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hoisting</title>
+</head>
+
+<body>
+
+  <script>
+    /*  Hoisting in JavaScript allows you to access functions and variables
+     before they have been created.(Wes doesn't use use hoisting) */
+
+    //  There is two things in JavaScript that is Hoisted: function declaration and variable declaration.
+
+
+
+    // FUNCTION DECLARATION (Hoisting)
+
+    sayHi(); //ovde ga pisemo
+    function sayHi() {
+      console.log('Hey');
+      add(2, 4); // 6
+    }
+    // sayHi(); //ali ga ovde hoistinguje
+
+    function add(a, b) {
+      console.log(a + b);
+    }
+    /* Because hoisting is, that when you run your JavaScript file,JavaScript compiler will take all of your function declarations, and move them to the top of the file, */
+
+
+    /* The benefit is that It's easier to check :
+        WHAT DOES THIS FILE DO? (for example)
+     */
+    sayHello('Relja');
+    /*  HOW DOES THIS FILE DO IT? (for example) */
+    function sayHello(name) {
+      console.log(`Hello ${name}`);
+    }
+
+
+
+    // VARIABLE DECLARATION (Hoisting)
+
+
+
+    VAR AGE = 2334L
+
+  </script>
+</body>
+
+</html>
