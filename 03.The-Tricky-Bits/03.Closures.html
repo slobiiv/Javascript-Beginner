@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Closures</title>
+</head>
+
+<body>
+  <!-- Closures are one of the things that comes up a lot on INTERVIEWS -->
+  <!-- Closure is the ability to access a parent level scope from a child scope even after the parent function has been terminated.
+  //   Closure gives you access to an outer function’s scope from an inner function.
+  -->
+  <script>
+    // An illustrative example :
+    // Closure creating a function.
+    function outer() {
+      const outerVar = 'Hey I am outer Var!';
+
+      function inner() {
+        const innerVar = 'Hey I am inner Var';
+        console.log(innerVar);
+        console.log(outerVar);
+      }
+      // inner(); inner function is able to do a scope lookup, and see the outer. And display both variables
+      return inner; // ALWAYS RETURN INNER FUNCTION
+    }
+    const innerFn = outer(); // this is an example of closure. We don't call function inside but later in time.
+    innerFn();
+    /* 
+    I can stick a function into a variable and then at a later point in time, I have access to that inner function. 
+    */
+
+
+
+    function createGreeting(greeting = '') {
+      const myGreeting = greeting.toUpperCase();
+      return function (name) {
+        return `${myGreeting} ${name}`;
+      }
+    }
+
+    // Q: Why is this(closure) helfpul. Why did I do this in two separate functions?
+    // A: Because you can create functions that are based off of whichever greeting you like:
+
+    const sayHello = createGreeting('Hello');
+    const sayHey = createGreeting('Hey');
+    console.log(sayHello('Wes'));
+    console.log(sayHey('Slobo'));
+    console.log(sayHello('Kait'));
+
+    /* What is happening here is that when you create this outer function(createGreeting), because we've created a variable(myGreeting) inside of that function, that is then accessed at a lower scope. So we've got inner scope(function (name)), we've got outter scope (function createGreeting(greeting = '')).
+    Because our inner scope references a variable that was created in our outer scope,
+    that is what is referred to as a CLOSURE. 
+    Where we still are able to access our outer variables ,inside of this outer function scope, inside of our inner, even after this function create greeting has been closed.*/
+
+
+
+    // Closure creating (private) variables.
+
+    function createGame(gameName) {
+      let score = 0;
+      return function win() {
+        score++;
+        return `Your name ${gameName} score is ${score}`;
+      }
+    }
+    const hockeyGame = createGame('Hockey');
+    hockeyGame(); // 1
+    hockeyGame(); // 2
+    hockeyGame(); // 3
+    const soccerGame = createGame('Soccer');
+    soccerGame(); // 1
+    /* What is happenng here is that if function that we create called "win" and we are using a score variable;
+    So whenever we create the game, we create an empty score variable
+    And then this inner function, whenever we actually run it,
+    will increment the score variable that is of the scope will increment the score variable that is of the scope of the outer scope
+
+    Why is that even helpful?
+    Well you can maintain multiple games at once.
+     */
+
+    /*
+    Closures are the ability for a child function, to access variables from a higher level scope, even after the functions have been called (or closed over).
+     */
+  </script>
+</body>
+
+</html>
