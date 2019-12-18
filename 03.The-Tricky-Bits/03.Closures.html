@@ -33,13 +33,11 @@
     I can stick a function into a variable and then at a later point in time, I have access to that inner function. 
     */
 
-
-
     function createGreeting(greeting = '') {
       const myGreeting = greeting.toUpperCase();
       return function (name) {
         return `${myGreeting} ${name}`;
-      }
+      };
     }
 
     // Q: Why is this(closure) helfpul. Why did I do this in two separate functions?
@@ -54,9 +52,7 @@
     /* What is happening here is that when you create this outer function(createGreeting), because we've created a variable(myGreeting) inside of that function, that is then accessed at a lower scope. So we've got inner scope(function (name)), we've got outter scope (function createGreeting(greeting = '')).
     Because our inner scope references a variable that was created in our outer scope,
     that is what is referred to as a CLOSURE. 
-    Where we still are able to access our outer variables ,inside of this outer function scope, inside of our inner, even after this function create greeting has been closed.*/
-
-
+    Where we still are able to access our outer variables ,inside of this outer function scope, inside of our inner, even after this function create greeting has been closed. */
 
     // Closure creating (private) variables.
 
@@ -65,8 +61,9 @@
       return function win() {
         score++;
         return `Your name ${gameName} score is ${score}`;
-      }
+      };
     }
+
     const hockeyGame = createGame('Hockey');
     hockeyGame(); // 1
     hockeyGame(); // 2
