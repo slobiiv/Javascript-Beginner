@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM - Selecting Elements</title>
+</head>
+
+<body>
+  <div class="items">
+    <p>Hi I'm an item</p>
+    <div>
+      <h2>Sub Div</h2>
+      <p>Hi I am an item of a sub div</p>
+    </div>
+    <img src="https://source.unsplash.com/random" width="300" alt="">
+    <p>Hi I am an item</p>
+    <p>Hi I am an item</p>
+  </div>
+
+
+  <!-- 
+    Put the script tag just before the closing <body> tag. That will ensure that all yout HTML is first downloaded in parse to the page before it even goes ahead and downloads and runs JavaScript.
+   -->
+  <script>
+    /* 
+    There is two main ways of selecting elements(only two that Wes is using): "querySelector" and "querySelecotAll".
+    */
+    const p = document.querySelector('p'); // querySelector will give you the first matching element
+    const divs = document.querySelectorAll('div'); // querySelectorAll will serach the entire page and  give you  multiple elements (when there is multiple elements it shows them in Nodelist).
+    // NodeList is an object consisting of a list of all nodes in a page.
+
+    // What if we want to select only one specific item inside an element?
+    // We can grab the element first which contains the item we need
+    const items = document.querySelector('.items');
+    // And then grab the item out of it.
+    const itemsImg = items.querySelector('img');
+    console.log(p);
+    console.log(divs);
+
+    console.log(items);
+    console.log(itemsImg);
+  </script>
+</body>
+
+</html>
