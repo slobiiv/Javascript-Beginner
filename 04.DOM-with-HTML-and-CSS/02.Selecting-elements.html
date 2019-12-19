@@ -29,13 +29,13 @@
     There is two main ways of selecting elements(only two that Wes is using): "querySelector" and "querySelecotAll".
     */
     const p = document.querySelector('p'); // querySelector will give you the first matching element
-    const divs = document.querySelectorAll('div'); // querySelectorAll will serach the entire page and  give you  multiple elements (when there is multiple elements it shows them in Nodelist).
+    const divs = document.querySelectorAll('div'); // querySelectorAll will search the entire page and  give you  multiple elements (multiple elements are shown as Nodelist).
     // NodeList is an object consisting of a list of all nodes in a page.
 
     // What if we want to select only one specific item inside an element?
-    // We can grab the element first which contains the item we need
+    // We can select the element first which contains the item we need
     const items = document.querySelector('.items');
-    // And then grab the item out of it.
+    // And then select the item out of it.
     const itemsImg = items.querySelector('img');
     console.log(p);
     console.log(divs);
