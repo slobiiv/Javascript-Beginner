@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM - Working with Classes</title>
+  <style>
+    img {
+      transition: all .3s;
+    }
+
+    .round {
+      border-radius: 50%;
+      transform: rotate(1turn);
+    }
+  </style>
+</head>
+
+<body>
+  <img class="nice cool" src="https://source.unsplash.com/random" width="600" height="600" alt="">
+
+  <script>
+    // CLASSES
+    const pic = document.querySelector('.nice');
+    pic.classList.add('open');
+    pic.classList.remove('cool');
+    // add, remove,contains, toggle are most used by Wes
+    console.log(pic.classList);
+
+    // On click it will round and rotate an image
+    function toggleRound() {
+      pic.classList.toggle('round');
+    }
+    pic.addEventListener('click', toggleRound);
+
+    // pic.className in console will actually just give us a list of the classes on an element
+    // pic.classList gives us some sort of utility functions or utility methods for working with it
+  </script>
+
+
+  <!-- Element is everything that is wrapped in tags -->
+  <!-- Node is everything , element and rest of the stuff on the page -->
+</body>
+
+</html>
