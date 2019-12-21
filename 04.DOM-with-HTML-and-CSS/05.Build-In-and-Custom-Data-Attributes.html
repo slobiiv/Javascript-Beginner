@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM - Build in and Custom Data Attributes</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <!-- Attributes are anything that is provided to an element as additional info (classes, source{src}, alt) -->
+  <img class="pic nice" src="https://source.unsplash.com/random" width="480" height="480" alt="">
+  <div class="items">
+    <div class="item">
+      <img src="https://source.unsplash.com/random" width="180" alt="">
+      <p>Hi I'm an item</p>
+    </div>
+    <div class="item item2">
+      <img src="https://source.unsplash.com/random" width="180" alt="">
+      <h2><span>hidden</span> I am a heading</h2>
+      <p>Hi I am an item</p>
+    </div>
+    <article class="item">
+      <h2>I am an article heading</h2>
+      <p class="pizzaList">This is how many pizza I ate!🍕</p>
+    </article>
+
+  </div>
+
+
+  <!-- USING DATA ATTRIBUTES: -->
+  <img class="custom" data-name="slobo" src="https://source.unsplash.com/1600x900/?nature,water" width="180" alt="">
+  <img data-name="sanu" src="https://source.unsplash.com/daily" width="180" alt="">
+  <img data-name="relja" src="https://source.unsplash.com/weekly" width="180" alt="">
+  <!-- 
+    data-* attributes allow us to store extra information on standard, semantic HTML elements 
+    without other hacks such as non-standard attributes. You can add whatever you want after data - *** .
+    (data - person, data - description, data - etc). 
+-->
+  <script>
+    const pic = document.querySelector('.pic');
+    pic.alt = 'This picture is taken from unsplash.com'; // added "alt" attribute
+    pic.title = 'Practicing Build in and Custom Data Attributes'; // setter
+    console.log(pic.title); // getter
+    console.log(pic.naturalWidth); // Return the original width of an image
+    /* When we console the naturalWidth it shows us 0 inside the console, because it takes time to download the image and shows us the original size. To avoid that, there is a "Event listener" that can help us to get the right size of the image. */
+    window.addEventListener('load', function () {
+      console.log(pic.naturalWidth);
+    });
+
+    // SET ATTRIBUTE (Very rarely Wes ever have to use SET and GET Attribute method)
+    pic.setAttribute('alt', 'adding new attribute'); // setting new attribute
+    console.log(pic.getAttribute('alt')); // getting (returning) an attribute value
+
+    // You can make your own attribute, but YOU SHOULDN'T JUST GO SILLY WILLY MAKING UP!
+    // pic.setAttribute('silly-willy', 'adding new attribute'); It is a non standard way and makes bugs
+
+    // IF YOU WANT TO USE YOUR CUSTOM MADE ATTRIBUTES:
+    // You use DATA ATTRIBUTES. (Wes Bos likes using them)
+    const custom = document.querySelector('.custom');
+    console.log(custom.dataset); // This is how you are getting a data attribute! DATASET will give us an object that's full of all the property values that you have. for example: {name: Slobo, lastname: Vlaic}
+    /* WHY IS THAT USEFUL? */
+    // We can do things like listen for a click
+    custom.addEventListener('click', function () {
+      alert(`Welcome ${custom.dataset.name}. It is nice to see you online again.`);
+    });
+    // Anytime you need a custom attribute, use Data attribute! example of data-attribute" data-lg" to enlarge the image
+  </script>
+</body>
+
+</html>
