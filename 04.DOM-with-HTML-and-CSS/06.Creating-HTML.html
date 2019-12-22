@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM - Creating HTML</title>
+  <style>
+    h2 span {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <img class="custom" data-name="slobo" src="https://source.unsplash.com/1600x900/?nature,water" width="180" alt="">
+  <img data-name="sanu" src="https://source.unsplash.com/daily" width="180" alt="">
+  <img data-name="relja" src="https://source.unsplash.com/weekly" width="180" alt="">
+
+  <div class="items">
+    <div class="item">
+      <p>Hi I'm an item</p>
+    </div>
+    <div class="item item2">
+      <img src="https://source.unsplash.com/random" width="180" alt="">
+      <h2><span>hidden</span> I am a heading</h2>
+      <p>Hi I am an item</p>
+    </div>
+    <article class="item">
+      <h2>I am an article heading</h2>
+      <p class="pizzaList">This is how many pizza I ate!🍕</p>
+    </article>
+  </div>
+
+  <!-- The main way of creating HTML: document.createElement method creates the HTML element specified by tagName -->
+  <script>
+    // Making a paragraph element
+    const myParagraph = document.createElement('p');
+    myParagraph.textContent = 'I am a new Prgrph';
+    myParagraph.classList.add('special');
+    console.log(myParagraph);
+
+    // Making an img element
+    const myImg = document.createElement('img');
+    myImg.src = 'https://source.unsplash.com/random';
+    myImg.alt = 'Unsplash pictures';
+    console.log(myImg);
+
+    // Making div element
+    const myDiv = document.createElement('div');
+    myDiv.classList.add('wrapper');
+    console.log(myDiv);
+
+    // HOW DO WE ADD CREATED ELEMENTS TO THE PAGE???
+  </script>
+</body>
+
+</html>
