@@ -10,6 +10,20 @@
     h2 span {
       display: none;
     }
+
+    .wrapper {
+      background-color: azure;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .wrapper img {
+      width: 400px;
+    }
   </style>
 </head>
 
@@ -33,8 +47,9 @@
     </article>
   </div>
 
-  <!-- The main way of creating HTML: document.createElement method creates the HTML element specified by tagName -->
   <script>
+    /* The main way of creating HTML: "document.createElement" method creates the HTML element specified by tagName */
+
     // Making a paragraph element
     const myParagraph = document.createElement('p');
     myParagraph.textContent = 'I am a new Prgrph';
@@ -53,6 +68,39 @@
     console.log(myDiv);
 
     // HOW DO WE ADD CREATED ELEMENTS TO THE PAGE???
+    // by using API called "appendChild"
+    /*
+    You need to go off and grab some sort of element and call.appendChild against it.
+    So if you you want to put it straight inside the <body> element you can go :
+    */
+
+    /*
+    document.body.appendChild(myDiv);
+    myDiv.appendChild(myParagraph);
+    myDiv.appendChild(myImg);
+    It's probably better to do this in a reverse order. 
+    Why?
+    Because every single time that you use appendChild, what you're doing is,
+    you're modifying the dom and that causes, in the browser,what is called a reflow, meaning the browser goes,
+    "Oh, there's something new on the page, something changed,". 
+    The browser is trying to convert this HTML, and CSS into what we see in the browser.
+
+    So what you can do is instead, you take myDiv and add to the body after appending elements
+      */
+    myDiv.appendChild(myParagraph);
+    myDiv.appendChild(myImg);
+    document.body.appendChild(myDiv);
+    // That's one way to actually go ahead and create elements.
+
+    /*  The second way of creating HTML (WES likes it): "insertAdjacentElement()" API method of the Element interface inserts a given element node at a given position relative to the element it is invoked upon.  */
+    // Adding heading to the existing .wrapper DIV (with insertAdjacentElement)
+    const heading = document.createElement('h2');
+    const heading2 = document.createElement('h2');
+    heading.textContent = 'Cool Things';
+    heading2.textContent = 'Cooler Things';
+    myDiv.insertAdjacentElement('afterbegin', heading);
+    myDiv.insertAdjacentElement('beforeend', heading2);
+    //                        where to place, which element
   </script>
 </body>
 
