@@ -102,6 +102,57 @@
     myDiv.insertAdjacentElement('beforeend', heading2);
     //                        where to place, which element
   </script>
+
+
+  <script>
+    // PRACTICE: Create unordered list with five elements. Start from the middle and add up the rest. Use the API's we learned
+    /*     
+        const unorderedList = document.createElement('ul');
+        const listOne = document.createElement('li');
+        const listTwo = document.createElement('li');
+        const listThree = document.createElement('li');
+        const listFour = document.createElement('li');
+        const listFive = document.createElement('li');
+    
+        listOne.textContent = 'First list';
+        listTwo.textContent = 'Second list';
+        listThree.textContent = 'Third list';
+        listFour.textContent = 'Fourth list';
+        listFive.textContent = 'Fifth list';
+    
+        unorderedList.appendChild(listTwo);
+        unorderedList.insertAdjacentElement('afterbegin', listOne);
+        unorderedList.appendChild(listThree);
+        unorderedList.appendChild(listFour);
+        unorderedList.insertAdjacentElement('beforeend', listFive);
+        console.log(unorderedList);
+        document.body.appendChild(unorderedList); 
+    */
+
+    // Wes Bos method: World longest way to create unordered list :D
+    const list = document.createElement('ul');
+    const li = document.createElement('li');
+    li.textContent = 'Third';
+    list.appendChild(li);
+
+    document.body.insertAdjacentElement('afterbegin', list);
+
+    const li5 = document.createElement('li');
+    li5.textContent = 'Five';
+    list.append(li5); // Dont use append in EI
+
+    const li1 = li5.cloneNode();
+    li1.textContent = 'First';
+    list.insertAdjacentElement('afterbegin', li1);
+
+    const li2 = document.createElement('li');
+    li2.textContent = 'Second';
+    li.insertAdjacentElement('beforebegin', li2);
+
+    const li4 = document.createElement('li');
+    li4.textContent = 'Four';
+    li.insertAdjacentElement('afterend', li4);
+  </script>
 </body>
 
 </html>
