@@ -9,9 +9,67 @@
 </head>
 
 <body>
+  <div class="item">
+    <img src="https://source.unsplash.com/random" alt="">
+    <h2>I am a heading</h2>
+    <p>I am an item</p>
+  </div>
+  <article id="item">
+    <h2>I am an article</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem, amet.</p>
+  </article>
+
 
   <!-- Creating HTML with strings  and XSS(Cross-site scripting) Wes Bos awesome method-->
   <script>
+    const item = document.querySelector('.item');
+    // console.log(item.innerHTML); // getter
+    /*  Previous divs innerHTML is:
+        <img src="https://source.unsplash.com/random" alt="" width="300" height="300">
+        <h2>I am a heading</h2>
+        <p>I am an item</p> 
+    */
+    item.innerHTML = `
+    <div>
+    <h1>Creating HTML with back ticks in JavaScript</h1>
+    </div>
+    `; // setter
+    /* We can create HTML with text and put it inside the "item"(variable), 
+    And if it is valid HTML the browser will take it and parse it(find a solution) and turn it into all of the items. */
+    // We can go multiple lines inside back ticks
+    // console.log(item.innerHTML); // getter
+    /* Recent divs inner HTML is: <h1>Creating HTML with back ticks in JavaScript</h1> */
+
+    /* WHY IS THIS COULD BE MORE USEFUL THEN "document.createElement()" and "appendChild()"method?
+    Because when you use backticks you can actually insert values very easily. */
+    //  WES BOS REALLY LIKES THIS APPROACH --> Here is an example:
+    const itemID = document.querySelector('#item');
+    const width = 400;
+    const src = `https://source.unsplash.com/random/`;
+    const description = `Awesome usnplash images`;
+    const myHTML = `
+    <div class="wrapper">
+      <h2>${description}</h2>
+      <img src="${src}" alt="${description}" width="${width}" />
+    </div>
+    `;
+    itemID.innerHTML = myHTML; // setting the inerHTML
+    // console.log(itemID.innerHTML);
+    // There is a couple of down sides to this approach:
+    /*
+    1) myHTML value are not elements. That means that myHTML has a value of a STRING. It's not possible to get
+    "<h2>" or "<img>" or any other element (like: myHTML.description; or, myHTML.classList,add('special') = ERROR).
+
+    2) It only BECOMES an ELEMENT once we dump it into the DOM by SETTING the "innerHTML".
+     So, if you want to add an eventListener, or classList, change attributes to any of these elements, it's NOT
+     DOABLE until you first dump it into the DOM !!! And then you'd have to go ahead and pull them out after the fact.
+
+    *)
+    const h2Heading = document.querySelector('h2');
+    h2Heading.classList.add('main-heading');
+    const image = document.querySelector('.wrapper img');
+    image.classList.add('special');
+     */
   </script>
 </body>
 

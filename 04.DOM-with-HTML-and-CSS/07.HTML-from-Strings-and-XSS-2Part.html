@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="item">
+    <img src="https://source.unsplash.com/random" alt="">
+    <h2>I am a heading</h2>
+    <p>I am an item</p>
+  </div>
+  <article>
+    <h2>I am an article</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem, amet.</p>
+  </article>
+
+
+  <script>
+    const item = document.querySelector('.item');
+    const width = 400;
+    const src = `https://source.unsplash.com/random/`;
+    const description = `Awesome usnplash images`;
+    const myHTML = `
+    <div class="wrapper">
+      <h2>${description}</h2>
+      <img src="${src}" alt="${description}" width="${width}" />
+    </div>
+    `;
+
+    // *************************************************************************************************************
+    /* There is a couple of ways you can kinda get around that and do the best of both worlds by using:
+      document.createRange() and .createContextualFragment().
+    */
+    // We have this String (myHTML), let's turn it into DOM element:
+    /* myFragment creates something called Range -> a collection of elements or part of HTML that we can then work with.  From that range we can imediately call another method, .createContextualFragment() method. */
+    const myFragment = document.createRange().createContextualFragment(myHTML);
+    console.log(myFragment.querySelector('img'));
+    // Turned from String to a DOM element.
+
+    // console.log(myFragment.querySelector('img'));
+    // console.log(myFragment.querySelector('.wrapper'));
+    document.body.appendChild(myFragment); // appending "myHTML" respectively myFragment do the DOM
+    /*
+    If you want to create HTML from a string you can either dump it straight into an element with .innerHTML, which we'll do in almost all cases.
+    Or if you need to add event listeners, change classes, change attributes, you can turn it into DOM nodes before it's dumped in.
+    With.createContextualFragment() where you pass it a actual string, then go ahead and dump that into the body or wherever it is that you want.
+    So that is creating HTML with strings.
+    */
+
+    /* SECURITY AND SANITIZATION  */
+  </script>
+</body>
+
+</html>
