@@ -22,6 +22,7 @@
 
   <script>
     const item = document.querySelector('.item');
+    console.log(item);
     const width = 400;
     const src = `https://source.unsplash.com/random/`;
     const description = `Awesome usnplash images`;
@@ -31,7 +32,7 @@
       <img src="${src}" alt="${description}" width="${width}" />
     </div>
     `;
-
+    // You just have to be aware that this is a potential vulnerability and we want to negate that.
     // *************************************************************************************************************
     /* There is a couple of ways you can kinda get around that and do the best of both worlds by using:
       document.createRange() and .createContextualFragment().
@@ -53,6 +54,9 @@
     */
 
     /* SECURITY AND SANITIZATION  */
+    /* XSS = Cros-site Scripting - attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted website (inside inputs and other data placeholders */
+    /* The only JavaScript that should be running on your page is JavaScript that is authored by you, the developer,
+    and from approved parties like Google Analytics. */
   </script>
 </body>
 

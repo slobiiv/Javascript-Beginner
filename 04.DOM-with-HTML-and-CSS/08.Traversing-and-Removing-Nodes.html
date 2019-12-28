@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM - Traversing and Removing Nodes</title>
+</head>
+
+<body>
+  <div class="bos"></div>
+  <div>
+    <p class="wes">Hi, I am Wes and I <em>like</em> to bbq and <strong>Make websites</strong>.</p>
+  </div>
+  <div class="item">
+    <img src="https://source.unsplash.com/random" width="300" height="300" alt="">
+    <h2>I am a heading</h2>
+    <p>I am an item</p>
+  </div>
+  <article>
+    <h2>I am an article</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem, amet.</p>
+  </article>
+
+  <script>
+    /* Traversing means moving up, down, over. When you have an element, you'll often need to select an element
+    based on their position. */
+    const wes = document.querySelector('.wes');
+
+    // ELEMENT PROPERTIES FOR TRAVERSING
+    // (In most cases You need Element selectors. These properties will ignore text nodes)
+    console.log(wes.children); // all the children elements (em, strong)
+    console.log(wes.firstElementChild); // first element child(em)
+    console.log(wes.lastElementChild); // last element child(strong)
+    console.log(wes.previousElementSibling); // previous element sibling (div class="bos")
+    console.log(wes.nextElementSibling); // next element sibling (div class="item")
+    console.log(wes.parentElement); // parent element (div)
+
+    /* We'd rather do is just use query selector and that will allow us to just kinda search  for what we want.  Instead traversing through nested elements ... */
+
+    // NODE PROPERTIES
+    // (These properties will not ignore text nodes)
+    console.log(wes.childNodes); // text(Hi, I am Wes and I), em, text(to bbq),strong, text(.)
+    console.log(wes.firstChild); // text('Hi, I am Wes and I ')
+    console.log(wes.lastChild); // text(.{full stop})
+    console.log(wes.previousSibling); // ""
+    console.log(wes.nextSibling); // ""
+    console.log(wes.parentNode); // div
+
+    // REMOVING ELEMENTS
+    // There's a method on every single element in every single node that is just the ability TO REMOVE something
+    const p = document.createElement('p');
+    p.textContent = 'I will be removed';
+    document.body.appendChild(p);
+    p.remove();
+    // if I console log paragraph underneath it, is it gonna be there ?
+    console.log(p); // Yes, it is deleted but you can console log it.
+    // It stays in JavaScript memory; We do still have access to that paragraph element.
+    /* So, not all is lost if you do remove it from the DOM if you do have reference to that element and you've created it in your javascript you can also just add it up again. */
+
+    // So that is traversing and creating.
+  </script>
+</body>
+
+
+</html>
