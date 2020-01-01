@@ -10,6 +10,60 @@
 
 <body>
 
+  <script>
+    // Make a div
+    const mainDiv = document.createElement('div');
+    // Add a class of wrapper to it
+    mainDiv.classList.add('wrapper');
+    // Put it into the body
+    document.body.appendChild(mainDiv);
+
+    // Make an unordered list
+    const ul = document.createElement('ul');
+    // Add three list items with the words 'one', 'two', 'three' in them
+    const liOne = document.createElement('li');
+    liOne.textContent = 'One';
+    const liTwo = document.createElement('li');
+    liTwo.textContent = 'Two';
+    const liThree = document.createElement('li');
+    liThree.textContent = 'Three';
+    ul.appendChild(liOne);
+    ul.appendChild(liTwo);
+    ul.appendChild(liThree);
+    // Put that list into the above wrapper
+    mainDiv.appendChild(ul);
+
+    // Create an image
+    const img = document.createElement('img');
+    // Set the source to an image
+    img.src = 'https://www.puppyleaks.com/wp-content/uploads/2018/10/puppers4.png';
+    // set a width to 250
+    img.width = 250;
+    // add a class of 'cute'
+    img.classList.add('cute');
+    // add an alt of 'Cute Puppy'
+    img.alt = 'Cute Puppy';
+    mainDiv.appendChild(img);
+
+    // With HTML string, make a div, with two paragraphs inside of it.
+    // Put this div before the unordered list from above
+    // Add a class to the second paragraph called warning
+    // remove first paragraph
+
+    // Create a function called 'generatePlayerCard' that takes in three arguments: name, age, and heigh
+    // Have that function return HTML that looks like this:
+    /* <div class='playerCard'>
+        <h2>NAME - AGE</h2>
+        <p>They are HEIGHT and AGE years old. In dog years, this person would be AGEINDOGYEARS. That would be a tall dog!</p>
+      </div>
+    */
+
+    // Make a new div with a class of cards
+    // Have that function make 4 cards
+    // append those cards to the div
+    // put the div into the DOM just before the wrapper element
+    // Bonus, put a delete button on each card so when tou click it, the whole card is removed.
+  </script>
 </body>
 
 </html>
