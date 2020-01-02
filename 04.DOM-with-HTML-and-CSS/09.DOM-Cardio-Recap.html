@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DOM Cardio Recap</title>
+  <style>
+    .playerCard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 2px solid red;
+      padding: 2rem;
+      max-width: 800px;
+    }
+  </style>
 </head>
 
 <body>
@@ -54,7 +63,7 @@
       </div>
     `;
     // Put this div before the unordered list from above
-    mainDiv.insertAdjacentHTML('afterbegin', myHTML); //  Just inside the element, before its first child.
+    mainDiv.insertAdjacentHTML('afterbegin', myHTML); //  Placing HTML just inside the element, before its first child.
     // Add a class to the second paragraph called warning
     const allParagraphs = mainDiv.querySelectorAll('p');
     allParagraphs[1].classList.add('warning');
@@ -68,12 +77,40 @@
         <p>They are HEIGHT and AGE years old. In dog years, this person would be AGEINDOGYEARS. That would be a tall dog!</p>
       </div>
     */
+    function generatePlayerCard(name, age, height) {
+      const html = `
+      <div class='playerCard'>
+        <h2>${name} - ${age}</h2>
+        <p>They are ${height}cm and ${age} years old. In dog years, this person would be ${age *
+        7}. That would be a tall dog!</p>
+        <button class="deleteBtn">Delete</button>
+      </div>
+      `;
+      return html;
+    }
 
     // Make a new div with a class of cards
+    const cards = document.createElement('div');
+    cards.classList.add('cards');
     // Have that function make 4 cards
+    let cardsHTML = generatePlayerCard('Slobodan', 31, 179);
+    cardsHTML += generatePlayerCard('Sanela', 41, 173);
+    cardsHTML += generatePlayerCard('Relja', 1, 65);
     // append those cards to the div
+    cards.innerHTML = cardsHTML;
     // put the div into the DOM just before the wrapper element
-    // Bonus, put a delete button on each card so when tou click it, the whole card is removed.
+    mainDiv.insertAdjacentElement('afterbegin', cards);
+    // Bonus, put a delete button on each card so when you click it, the whole card is removed.
+    // 1) select all buttons
+    const buttonDelete = document.querySelectorAll('.deleteBtn');
+    // 2) make a function to delete cards
+    function deleteCard(event) {
+      const buttonClicked = event.currentTarget;
+      // buttonClicked.parentElement.remove();
+      buttonClicked.closest('.playerCard').remove(); // Using .closest, it will search for the div or any element that has a playerCard class and remove that.
+    }
+    // 3) loop over every button
+    buttonDelete.forEach(button => button.addEventListener('click', deleteCard));
   </script>
 </body>
 
