@@ -46,9 +46,20 @@
     mainDiv.appendChild(img);
 
     // With HTML string, make a div, with two paragraphs inside of it.
+    // https://davidwalsh.name/convert-html-stings-dom-nodes a source for creating HTML from TEMPLATE STRINGS
+    const myHTML = `
+      <div class="myDiv">
+        <p>This paragraph needs to be deleted.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+    `;
     // Put this div before the unordered list from above
+    mainDiv.insertAdjacentHTML('afterbegin', myHTML); //  Just inside the element, before its first child.
     // Add a class to the second paragraph called warning
+    const allParagraphs = mainDiv.querySelectorAll('p');
+    allParagraphs[1].classList.add('warning');
     // remove first paragraph
+    allParagraphs[0].remove();
 
     // Create a function called 'generatePlayerCard' that takes in three arguments: name, age, and heigh
     // Have that function return HTML that looks like this:
