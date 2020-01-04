@@ -6,12 +6,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DOM - Event Listeners</title>
+  <style>
+    button {
+      background-color: #cc1c65;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+    }
+
+    button:active {
+      background-color: #921324;
+    }
+
+    .single {
+      margin: 3rem 0;
+    }
+
+    .multiple {
+      max-width: 800px;
+      border: 2px solid magenta;
+      margin: 2rem 0;
+    }
+
+    .multiple button {
+      margin: .5rem;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="single">
+    <button class="butts">Click me!</button>
+    <button class="cool">Click me also!</button>
+  </div>
 
   <script>
+    /* DOM Elements, they emit(produce, make) events. You can attach event listeners to all elements, to the document, as well as the window */
+    /* In order to listen for events on elements, you first need :
+        1) to go and off and get them
+        2) add event listener which takes two(sometimes three) arguments.
+              a) What is the type of events that you want to listen to?
+              b) Callback (anonymous)function
+        3) Do something (whithin the function)
+        
+        * "When somebody clicks on my 'butts' button, can you please do me a favor and run it for me?
+
+     */
+    const butts = document.querySelector('.butts');
+    const coolButton = document.querySelector('.cool');
+
+    butts.addEventListener('click', function () {
+      console.log('It got clicked from "Callback" anonymous function!');
+    });
+
+    // Wes Prefers this way: (FIRST BENEFIT: it's DRY)
+    /* We can also create a named function outside (Wes Boslike to use 'Handle' for naming Event related functions) */
+    function handleClick() {
+      console.log('I got clicked from "handleClick" named function!');
+    } // Now instead of passing an anonymous function, you can just pass reference to the function
+    coolButton.addEventListener('click', handleClick);
+
+    // (SECOND BENEFIT:)If you want to remove an event listener from an element, you MUST have reference (you must use a named function,) to the function.(like handleClick function that we have.)(You can use arrow function, also.)
+    /* REMOVING (UNBIDING) */ coolButton.removeEventListener('click', handleClick);
+    // You have to pass the event you wish to stop and as well as the function which you wish to stop
+
+    // * BINDING essentially means, taking a function and listening for a specific click against an element, This function('handleClick' is BOUND to 'coolButton' element) is bound that element,
+    // * UNBINDING is when you take it off, remove a function and a listener from the element
   </script>
+  <div class="multiple">
+    <h2 style="color: blueviolet;">Buy Buttons</h2>
+    <button class="buy">Buy Item 1</button>
+    <button class="buy">Buy Item 2</button>
+    <button class="buy">Buy Item 3</button>
+    <button class="buy">Buy Item 4</button>
+    <button class="buy">Buy Item 5</button>
+    <button class="buy">Buy Item 6</button>
+    <button class="buy">Buy Item 7</button>
+    <button class="buy">Buy Item 8</button>
+    <button class="buy">Buy Item 9</button>
+    <button class="buy">Buy Item 10</button>
+  </div>
+
+  <script>
+    // LISTENING FOR EVENTS ON MULTIPLE ITEMS
+    const buyButtons = document.querySelectorAll('button.buy'); // console.log shows the node list of each element
+
+    /* It doesn't make sense to have to select all ten of them and attach to event listener 10 times, */
+    /* in order to attach event listeners to multiple events,
+    you actually MUST LOOP (forEach) over and for each element attach it individually.
+    */
+    /* "forEach" is a method that will run a function for each item in our node list. As an argument in anonymous function inside the forEach method, we put a "singular" placeholder which represents an every each item inside node list.
+    Now that we have the individual elements that are on the page, we can use an "eventListener" */
+    function buyItem() {
+      console.log('BUY ITEM');
+    }
+    buyButtons.forEach(function (buyButton) {
+      // console.log(buyButton); // <button class="buy">Buy Item 1</button>,<button class="buy">Buy Item 2</button> ...
+      console.log('Binding the buy button');
+      buyButton.addEventListener('click', buyItem);
+    });
+  </script>
+
 </body>
 
 </html>
