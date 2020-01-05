@@ -103,11 +103,23 @@
       'click',
       function (event) {
         console.log('You clicked a window');
-        console.log(event.target);
+        console.log(event.target); // what we clicked
+        console.log(event.type); // click
+        console.log(event.bubbles); // true or false - whether the person has called stop propagation or not.
         event.stopPropagation(); // with this stopPropagation() - function handleBuyButtonCLick will never actually run Because we're stopping it at the window level.
       },
       { capture: true } // with this capture, Meaning that the order at which these suckers are fired, goes from top down, rather than bubble up.
     );
+  </script>
+
+  <img class="photo" src="https://picsum.photos/200" alt="Nice">
+  <script>
+    const photoEl = document.querySelector('.photo');
+    photoEl.addEventListener('mouseenter', function (event) {
+      console.log(event.currentTarget);
+      console.log(this); // "this" keyword is always going to be equal to whatever is to the left of the dot.(left of the addEventListener, which is "photoEl")
+      // In EVENT LISTENERS, ALWAYS USE event.target or event.currentTarget. DON'T USE "this" keyword
+    });
   </script>
 
 </body>
