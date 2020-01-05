@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Events - targets, bubbling, propagation and capture</title>
+  <style>
+    button {
+      background-color: #cc1c65;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+    }
+
+    button:active {
+      background-color: #921324;
+    }
+
+    .single {
+      margin: 3rem 0;
+    }
+
+    .multiple {
+      max-width: 800px;
+      border: 2px solid magenta;
+      margin: 2rem 0;
+    }
+
+    .multiple button {
+      margin: .5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="single">
+    <button class="butts">Click me!</button>
+    <button class="cool">Click me also!</button>
+  </div>
+  <div class="multiple">
+    <button data-price="100" class="buy">Buy item 1</button>
+    <button data-price="200" class="buy">Buy item 2</button>
+    <button data-price="300" class="buy">Buy item 3</button>
+    <button data-price="400" class="buy">Buy item 4</button>
+    <button data-price="500" class="buy">Buy item 5</button>
+    <button data-price="600" class="buy">Buy item 6</button>
+    <button data-price="700" class="buy">Buy item 7</button>
+    <button data-price="800" class="buy">Buy item 8</button>
+    <button data-price="900" class="buy">Buy item 9</button>
+    <button data-price="999" class="buy">Buy item 10</button>
+  </div>
+
+
+  <script>
+    // Listen to Multiple Items
+
+    /* *GOOD QUESTION*: Now when somebody clicks a button, how do I get information about what button they're clicking?
+        ('Cause if I have one single function that handles the clicking of 10 buttons how do I know specifically which button they have clicked?) 
+      *That information is hidden away in the EVENT OBJECT. 
+      *To access the event object, we modify our CALLBACK function, or our handler("handleBuyButtonCLick"), to accept a paremeter that is the EVENT. So when we define our (Callback)function, we can put a parameter here and call it "event".*
+    */
+    const buyButtons = document.querySelectorAll('button.buy');
+    function handleBuyButtonCLick(event) {
+      console.log('You clicked a button');
+      // console.log('You are buying it', event); // event - This thing called a pointer event.(containes clicks, touches and mouse events. And they're all sorta being "consolidated into one pointer event". We are interested in "target" and "currentTarget")
+      console.log(event.target);
+      console.log(event.currentTarget);
+      /* What is the difference between "target" and "currentTarget"? - in most cases,you probably wanna reach for "currentTarget" instead of "target". But it often is helpful to know did somebody click on an element inside of me? Or did they click on the actual element? */
+      const button = event.target;
+      console.log(button.textContent, ' - is a textContent'); // displays element value
+      console.log(parseFloat(event.target.dataset.price), ' - is a dataset value'); // parseFloat keeps decimal, parseInt doesn't
+      /* What happened in this event: Including the "EVENT" type (mouse click), then you have the "TARGET", once you have the target, you can access anything you want about it. */
+      // Bubbling - Meaning that I clicked on the "strong" tag.But I also clicked on the "button". Then I also clicked on the "body"...also "html"...and also on the "window". Even though I clicked on this tiny little strong tag, both the browser and the operating system will register that click, and it will keep bubbling up.
+      console.log(event.target === event.currentTarget);
+
+      /* So the way that you can prevent that, is with a method on the event that's called "stop propagation". */
+      event.stopPropagation();
+    }
+
+    buyButtons.forEach(function (button) {
+      button.addEventListener('click', handleBuyButtonCLick);
+    });
+
+    /* What is cool about "window event.target", any time I click on something, it will show me what it is you're actually clicking on.
+      (Whether it's a button, or an h2, or another button) 
+    */
+    window.addEventListener('click', function (event) {
+      console.log(event.target);
+    });
+  </script>
+
+  <script>
+    /* NOTICE: Wes used this Capture maybe 3 times in his career. But it's good to know. */
+    /* Capture method is kind of opposite of stopPropagation  https://javascript.info/bubbling-and-capturing
+      (Capture phase 1) - going from window to the final element(eg. button), (Target phase 2)stops at the button,(Bubbling phase 3) and then begins bubbling up.
+    */
+    /* There's an option of when you listen for clicks, you can listen during the capture phase. Meaning that if we wanna listen for a click on the window first, and stop it from going any further, and that is with a third argument to addEventListener. */
+    // Three parameters: 'click', 'function()' and {}
+    window.addEventListener(
+      'click',
+      function (event) {
+        console.log('You clicked a window');
+        console.log(event.target);
+        event.stopPropagation(); // with this stopPropagation() - function handleBuyButtonCLick will never actually run Because we're stopping it at the window level.
+      },
+      { capture: true } // with this capture, Meaning that the order at which these suckers are fired, goes from top down, rather than bubble up.
+    );
+  </script>
+
+</body>
+
+</html>
