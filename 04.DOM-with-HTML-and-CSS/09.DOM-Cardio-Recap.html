@@ -110,7 +110,10 @@
       buttonClicked.closest('.playerCard').remove(); // Using .closest, it will search for the div or any element that has a playerCard class and remove that.
     }
     // 3) loop over every button
-    buttonDelete.forEach(button => button.addEventListener('click', deleteCard));
+    // buttonDelete.forEach(button => button.addEventListener('click', deleteCard));
+    buttonDelete.forEach(function (button) {
+      button.addEventListener('click', deleteCard);
+    });
   </script>
 </body>
 
