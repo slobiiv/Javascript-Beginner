@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Events - Prevent Default and Form Events</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <a href="https://wesbos.com" class="wes">Wes Bos</a>
+    <form name="signup">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+      <input type="checkbox" id="agree" name="agree">
+      <label for="agree">I agree to the terms and conditions</label>
+      <hr>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    /* This is pretty common stuff that you're going to be doing along with clicks and hovers and stuff like that.
+       A lot of your time working with events will probably be surrounded in your forms and inputs
+       Let's first talk about "Prevent Default".
+       if you call "event.preventDefault" it will prevent the default thing of that element from happening.
+    */
+    const wes = document.querySelector('.wes');
+
+    wes.addEventListener('click', function (event) {
+      const shouldChangePage = confirm(
+        'This website might be malicious! Do you wish to proceed?'
+      );
+      if (!shouldChangePage) {
+        console.log(shouldChangePage); // If we should not change (cancel) false or (Ok) to run the page anyway
+        event.preventDefault();
+      }
+    });
+    /*
+      Preventing default is extremely handy for when you wish to stop the default thing from happening.
+     */
+  </script>
+
+  <script>
+    // Another common one that Wes specifically use is "submiting a form element"
+    const signup = document.querySelector('[name="signup"]');
+    signup.addEventListener('submit', function (event) {
+      console.log(event); // event{isTrusted: true, type: "submit", target: form, currentTarget: form, eventPhase: 2,}
+
+      const name = event.currentTarget.name.value;
+      if (name.includes('chad')) {
+        alert('Sorry, can not come in!');
+        event.preventDefault(); // to able to log the event submit we need to preventDefault
+      }
+      // console.log(event.currentTarget.email.value); // logging email values
+      // console.log(event.currentTarget.agree.checked); // logging agree checkbox
+      /* The reason why those values are available to us is because the inputs have a "name" attributes on them */
+    });
+  </script>
+
+  <script>
+    // Other types of events with form inputs: (These are the ones that Wes is using more often)
+    /*
+          - keyup // runs on letting go key pad
+          - keydown // runs on pressing the key pad
+          - focus // Focus is when you focus into an input
+          - blur // Blur is when you focus out of it
+    - And that can be used for showing styling, or recording information about how long people spend on specific  inputs.
+    */
+    function logEvent(event) {
+      console.log(event.type); // this will give us the name of the event,
+      console.log(event.currentTarget.value); // this will give us what the user has typed in there.
+    }
+    signup.name.addEventListener('keyup', logEvent);
+    signup.name.addEventListener('keydown', logEvent);
+  </script>
+</body>
+
+</html>
