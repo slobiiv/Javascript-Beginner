@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Events - Accesibility Gotchas and Keyboard Codes</title>
+</head>
+
+<body>
+  <!-- 
+  Quick note on accessibility, and keeping our websites accessible to anybody who wants to use them,
+  no matter what maybe disability they might have, or what input are device they have, 
+  or what situation they're currently in, it should still be a usable website. 
+  And HTML by itself, if you mark it up correctly, is very accessible.
+
+  What happens often is us JavaScript developers come in here and goof it up for everybody.
+  And we make these things that only work with the mouse, or aren't accessible to anybody.
+
+  - So what we want to do here is just go over a couple of common pitfalls that happen in JavaScript.
+
+  * The first is :
+        The difference between buttons and links.
+          - Buttons are to be used for actions that happen inside of an application or website.
+          - Links are used to change the page.
+  * The second is:
+        Things that are not keyboard accessible, should not have clicks registered on them unless you need to.
+          - There certainly are valid use cases for clicking on a photo:
+            a) Make it larger, draw on the photo, zoom it, click and drag :
+            * now, I can tab through all of my everything on browser here but I can't click on that photo 
+            with only my keyboard
+            ********* Solution for image is to put it inside button with "tabindex=0"
+            ********* Solution is to give your DIV or other element a "role = 'button'" and "tabindex = 0"
+                      So that people can tab to it with their keyboards
+            ********* Now you can tab through and focus on each thing
+            <div role="button" tabindex="0"></div>
+            <button>
+              <img tabindex="0" />
+            </button>
+  -->
+  <script>
+    /* if I focus this image here and hit my enter key, unlike some other buttons and things like that. It still will not trigger a click. If That's the case you have to go back to your JavaScript, and you also have to grab this event listener. This is how Wes would manage: */
+    const photo = document.querySelector('.photo');
+    /* How do I then only listen for the enter key on here? */
+    function handlePhotoClick(event) {
+      if (event.type === 'click' || event.key === 'Enter') {
+        console.log('You clicked the photo');
+        console.log(event.key);
+      }
+      // http://keycode.info/
+    }
+    photo.addEventListener('click', handlePhotoClick);
+    photo.addEventListener('keyup', handlePhotoClick);
+  </script>
+</body>
+
+</html>
