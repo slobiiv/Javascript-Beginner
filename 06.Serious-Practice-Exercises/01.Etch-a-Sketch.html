@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Etch-a-Sketch</title>
+  <style>
+    body {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      background-color: white;
+      background: url(https://images.pexels.com/photos/713664/pexels-photo-713664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+      background-size: cover;
+    }
+
+    canvas {
+      border: 30px solid #e80022;
+      border-radius: 10px;
+      width: 900px;
+      height: 500px;
+      background-color: white;
+    }
+
+    button {
+      background-color: #eb2eac;
+      border: none;
+      padding: 10px 15px;
+      color: white;
+      font-weight: bold;
+    }
+
+    button:active {
+      background-color: #b42986;
+    }
+
+    canvas.shake {
+      animation: shake .6s linear 1;
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    TOPICS WE WILL COVERS: 
+      - DOM
+      - CANVAS
+      - SWITCH Statement
+  -->
+  <div class="canvasWrap">
+    <canvas width="1600" height="1000" id="etch-a-sketch"></canvas>
+    <div class="buttons">
+      <button class="shake">Shake!</button>
+    </div>
+  </div>
+
+
+  <script src="01.etch-a-sketch.js"></script>
+</body>
+
+</html>

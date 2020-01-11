@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Click Outside Modal</title>
+</head>
+<!-- Checking to see if you clicked outside of an element -->
+
+<body>
+  <div class="cards">
+    <div class="card" data-description="Sanela is beautiful">
+      <img src="https://picsum.photos/400?random=1" alt="">
+      <h2>Sanela</h2>
+      <button class="card-button">Learn more &rarr;</button class="card-button">
+    </div>
+    <div class="card" data-description="Relja is cutest baby ever">
+      <img src="https://picsum.photos/400?random=2" alt="">
+      <h2>Relja</h2>
+      <button class="card-button">Learn more &rarr;</button>
+    </div>
+    <div class="card" data-description="Slobodan is cool">
+      <img src="https://picsum.photos/400?random=3" alt="">
+      <h2>Slobodan</h2>
+      <button class="card-button">Learn more &rarr;</button>
+    </div>
+  </div>
+
+  <div class="modal-outer">
+    <div class="modal-inner">
+      Testing 123
+    </div>
+  </div>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
+    body {
+      background-color: rgb(112, 167, 230);
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 40px;
+      padding: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 3px;
+    }
+
+    .card img {
+      width: 100%;
+    }
+
+    .card h2 {
+      color: black;
+      font-size: 2rem;
+    }
+
+    button {
+      background-color: #ca3290;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+    }
+
+
+    /* Create Modal */
+    .modal-outer {
+      display: grid;
+      background: hsla(50, 100%, 50%, 0.5);
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      justify-content: center;
+      align-items: center;
+      /*  opacity: 0;This will still keep the modal on the website */
+
+      /* Hide this modal until we need it */
+      opacity: 0;
+      /* "pointer-events: none;" it will tell the browser just to ignore any events that come to that modal and it actually just will not capture them. 
+      Even though that modal-outter is actually still there, we can click on the buttons behind*/
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
+
+    .modal-outer img {
+      width: 100%;
+    }
+
+    /* When the modal is "open" do the opposite(show). */
+    .modal-outer.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* A modal is a dialog box/popup window that is displayed on top of the current page */
+    .modal-inner {
+      max-width: 600px;
+      min-height: 200px;
+      min-width: 400px;
+      padding: 2rem;
+      border-radius: 5px;
+      background-color: white;
+    }
+  </style>
+
+  <script src="02.Modal-and-Click-Outside-Modal.js"></script>
+
+</body>
+
+</html>
